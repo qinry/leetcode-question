@@ -5,12 +5,12 @@ import (
 )
 
 func combinationSum2(candidates []int, target int) [][]int {
-	var result [][]int
+	var combinations [][]int
 	if len(candidates) == 0 {
-		return result
+		return combinations
 	}
 	sort.Ints(candidates)
-	subset := []int{}
+	combination := []int{}
 	var getNext func(idx int) int
 	getNext = func(idx int) int {
 		next := idx
@@ -22,16 +22,16 @@ func combinationSum2(candidates []int, target int) [][]int {
 	var backtracking func(target, idx int)
 	backtracking = func(target, idx int) {
 		if target == 0 {
-			temp := make([]int, len(subset))
-			copy(temp, subset)
-			result = append(result, temp)
+			temp := make([]int, len(combination))
+			copy(temp, combination)
+			combinations = append(combinations, temp)
 		} else if target > 0 && idx < len(candidates) {
 			backtracking(target, getNext(idx))
-			subset = append(subset, candidates[idx])
+			combination = append(combination, candidates[idx])
 			backtracking(target-candidates[idx], idx+1)
-			subset = subset[:len(subset)-1]
+			combination = combination[:len(combination)-1]
 		}
 	}
 	backtracking(target, 0)
-	return result
+	return combinations
 }

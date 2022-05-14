@@ -11,25 +11,22 @@ func letterCombinations(digits string) []string {
 		"8": "tuv",
 		"9": "wxyz",
 	}
-	var result []string
-	var backtracking func(digits string, digitToLetters map[string]string, idx int, subset string, result *[]string)
-	backtracking = func(digits string, digitToLetters map[string]string, idx int, subset string, result *[]string) {
+	var combinations []string
+	var backtracking func(digits string, digitToLetters map[string]string, idx int, combination string)
+	backtracking = func(digits string, digitToLetters map[string]string, idx int, combination string) {
 		if idx == len(digits) {
-			*result = append(*result, subset)
+			combinations = append(combinations, combination)
 		} else if idx < len(digits) {
-			digit := string(digits[idx])
-			letters := digitToLetters[digit]
-			letterCount := len(digitToLetters[digit])
+			letters := digitToLetters[digits[idx:idx+1]]
+			letterCount := len(letters)
 			for i := 0; i < letterCount; i++ {
-				subset = subset + string(letters[i])
-				backtracking(digits, digitToLetters, idx+1, subset, result)
-				subset = subset[:len(subset)-1]
+				backtracking(digits, digitToLetters, idx+1, combination+string(letters[i]))
 			}
 		}
 	}
 	if len(digits) != 0 {
-		backtracking(digits, digitToLetters, 0, "", &result)
+		backtracking(digits, digitToLetters, 0, "")
 	}
 
-	return result
+	return combinations
 }

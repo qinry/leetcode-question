@@ -38,8 +38,8 @@ func connect2(root *Node) *Node {
 }
 
 func connect3(root *Node) *Node {
-	q1 := []*Node{}
-	q2 := []*Node{}
+	var q1 []*Node
+	var q2 []*Node
 	if root != nil {
 		q1 = append(q1, root)
 	}
@@ -57,9 +57,8 @@ func connect3(root *Node) *Node {
 			q2 = append(q2, curr.Right)
 		}
 		if len(q1) == 0 {
-			tmp := q1
 			q1 = q2
-			q2 = tmp
+			q2 = []*Node{}
 			prev = nil
 		} else {
 			prev = curr
