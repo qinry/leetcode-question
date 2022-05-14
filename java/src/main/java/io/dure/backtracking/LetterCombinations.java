@@ -21,20 +21,20 @@ public class LetterCombinations {
             return result;
         }
 
-        helper(digits, digitToLetters, 0, new StringBuilder(), result);
+        backtracking(digits, digitToLetters, 0, new StringBuilder(), result);
         return result;
     }
 
-    private void helper(String digits, Map<String,String> digitToLetters, int idx,
-                        StringBuilder subset, List<String> result) {
+    private void backtracking(String digits, Map<String,String> digitToLetters, int idx,
+                              StringBuilder combination, List<String> combinations) {
         if (idx == digits.length()) {
-            result.add(subset.toString());
+            combinations.add(combination.toString());
         } else if (idx < digits.length()){
             String letters = digitToLetters.get(digits.substring(idx, idx+1));
             for (int i = 0; i < letters.length(); i++) {
-                subset.append(letters.charAt(i));
-                helper(digits, digitToLetters, idx+1, subset, result);
-                subset.deleteCharAt(idx);
+                combination.append(letters.charAt(i));
+                backtracking(digits, digitToLetters, idx+1, combination, combinations);
+                combination.deleteCharAt(idx);
             }
         }
     }

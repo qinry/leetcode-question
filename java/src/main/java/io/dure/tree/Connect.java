@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PopulatingNextRightPointersInEachNode {
+public class Connect {
 
     public static class Node {
         public int val;
@@ -65,7 +65,7 @@ public class PopulatingNextRightPointersInEachNode {
         Deque<Node> stack = new LinkedList<>();
         while (current != null || !stack.isEmpty()) {
             while (current != null) {
-                helper(current);
+                linkNode(current);
                 stack.push(current);
                 current = current.left;
             }
@@ -75,7 +75,7 @@ public class PopulatingNextRightPointersInEachNode {
         return root;
     }
 
-    private void helper(Node node) {
+    private void linkNode(Node node) {
         if (node.left != null && node.right != null) {
             node.left.next = node.right;
             if (node.next != null) {
@@ -92,7 +92,7 @@ public class PopulatingNextRightPointersInEachNode {
         if (root == null) {
             return root;
         }
-        helper(root);
+        linkNode(root);
         dfs(root.left);
         dfs(root.right);
         return root;
