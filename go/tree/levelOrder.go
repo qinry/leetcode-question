@@ -1,11 +1,5 @@
 package tree
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
 func levelOrder(root *TreeNode) [][]int {
 	order := [][]int{}
 	if root == nil {
@@ -61,7 +55,7 @@ func levelOrder2(root *TreeNode) [][]int {
 			q = append(q, currentNode.Right)
 			next++
 		}
-		if current == 0{
+		if current == 0 {
 			order = append(order, level)
 			level = []int{}
 			current = next
