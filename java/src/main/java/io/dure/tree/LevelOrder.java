@@ -7,25 +7,6 @@ import java.util.Queue;
 
 public class LevelOrder {
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode() {
-        }
-
-        TreeNode(int val) {
-            this.val = val;
-        }
-
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> order = new ArrayList<>();
         Queue<TreeNode> q1 = new LinkedList<>();
