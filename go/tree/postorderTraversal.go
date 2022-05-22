@@ -1,8 +1,8 @@
 package tree
 
 func postorderTraversal(root *TreeNode) []int {
-	path := []int{}
-	stack := []*TreeNode{}
+	var path []int
+	var stack []*TreeNode
 	curr := root
 	var prev *TreeNode
 	for curr != nil || len(stack) != 0 {

@@ -1,8 +1,8 @@
 package tree
 
 func rightSideView(root *TreeNode) []int {
-	views := []int{}
-	q := []*TreeNode{}
+	var views []int
+	var q []*TreeNode
 	current := 0
 	next := 0
 	if root != nil {

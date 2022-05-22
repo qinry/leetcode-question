@@ -1,14 +1,14 @@
 package tree
 
 func levelOrder(root *TreeNode) [][]int {
-	order := [][]int{}
+	var order [][]int
 	if root == nil {
 		return order
 	}
 	var q1 []*TreeNode
 	q1 = append(q1, root)
-	q2 := []*TreeNode{}
-	level := []int{}
+	var q2 []*TreeNode
+	var level []int
 	for len(q1) != 0 {
 		currentNode := q1[0]
 		q1 = q1[1:]
@@ -31,16 +31,16 @@ func levelOrder(root *TreeNode) [][]int {
 }
 
 func levelOrder2(root *TreeNode) [][]int {
-	current := 0
-	next := 0
-	order := [][]int{}
+	current := 0      // 当前层结点的数
+	next := 0         // 下一层
+	var order [][]int // 结果
 
-	var q []*TreeNode
+	var q []*TreeNode // 队列
 	if root != nil {
 		q = append(q, root)
 		current++
 	}
-	level := []int{}
+	var level []int // 某一层结果
 	for len(q) != 0 {
 		currentNode := q[0]
 		q = q[1:]

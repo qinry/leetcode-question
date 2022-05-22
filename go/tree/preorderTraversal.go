@@ -1,12 +1,12 @@
 package tree
 
 func preorderTraversal(root *TreeNode) []int {
-	path := []int{}
-	stack := []*TreeNode{}
+	var path []int
+	var stack []*TreeNode
 	curr := root
 	for curr != nil || len(stack) != 0 {
 		for curr != nil {
-			path = append(path, curr.Val)
+			path = append(path, curr.Val) // pre
 			stack = append(stack, curr)
 			curr = curr.Left
 		}
